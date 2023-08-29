@@ -1,24 +1,40 @@
 <main>
-  <section class="countdown">
-    <p>
-      <span *ngIf="intervalEnabled; else intervalDisabled">
-        New joke arriving in {{ newJokeTimeRemaining }} seconds...
-      </span>
-      <ng-template #intervalDisabled>
-        Resume to keep getting new jokes.
-      </ng-template>
-    </p>
-    <button mat-button color="{{ intervalEnabled ? 'warn' : 'accent' }}"
-      (click)="toggleInterval()">
-      {{ intervalEnabled ? 'PAUSE':'RESUME'}}
-    </button>
-  </section>
-  <section *ngIf="loadingJokes">
+  <section *ngIf="loadingJokes; else jokesLoaded">
     <mat-progress-bar mode="determinate" value="{{ jokes.length * 10 }}"></mat-progress-bar>
     <span class="text-center">Loading jokes...</span>
   </section>
-  <section *ngIf="!loadingJokes">
-    <app-joke *ngFor="let joke of jokes" [joke]="joke">
-    </app-joke>
-  </section>
+  <ng-template #jokesLoaded>
+    <section *ngIf="errorMessage">
+      <mat-card class="error">
+        <mat-card-header>
+          <mat-card-title>Oops... something went wrong!</mat-card-title>
+          <button mat-icon-button
+            (click)="dismissError()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-card-header>
+        <mat-card-content>
+          {{ errorMessage }}
+        </mat-card-content>
+      </mat-card>
+    </section>
+    <section class="countdown">
+      <p>
+        <span *ngIf="intervalEnabled; else intervalDisabled">
+          New joke arriving in {{ newJokeTimeRemaining }} seconds...
+        </span>
+        <ng-template #intervalDisabled>
+          Resume to keep getting new jokes.
+        </ng-template>
+      </p>
+      <button mat-button color="{{ intervalEnabled ? 'warn' : 'accent' }}"
+        (click)="toggleInterval()">
+        {{ intervalEnabled ? 'PAUSE':'RESUME'}}
+      </button>
+    </section>
+    <section>
+      <app-joke *ngFor="let joke of jokes" [joke]="joke">
+      </app-joke>
+    </section>
+  </ng-template>
 </main>

@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Angular app using https://api.chucknorris.io/ to list random jokes.
 
+Check out this app deployed to https://chuck-jokes-9a627.web.app/
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

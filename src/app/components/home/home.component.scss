@@ -3,3 +3,11 @@
   align-items: center;
   grid-column-gap: 1rem;
 }
+
+mat-card.error {
+  background: rgb(235 57 57 / 30%);
+  mat-card-header {
+    align-items: center;
+    justify-content: space-between;
+  }
+}
