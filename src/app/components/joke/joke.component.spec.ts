@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+
 import { JokeComponent } from './joke.component';
 
 describe('JokeComponent', () => {
@@ -8,6 +11,10 @@ describe('JokeComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [
+        MatCardModule,
+        MatIconModule
+      ],
       declarations: [JokeComponent]
     });
     fixture = TestBed.createComponent(JokeComponent);
