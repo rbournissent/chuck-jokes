@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, interval } from 'rxjs';
 import { Joke } from '../models/joke';
 
 @Injectable({
@@ -11,6 +11,10 @@ export class JokesStore {
 
   private jokes = new BehaviorSubject<Joke[]>([]);
   jokes$ = this.jokes.asObservable();
+
+  private intervalEnabled = new BehaviorSubject<boolean>(true);
+  intervalEnabled$ = this.intervalEnabled.asObservable();
+  newJokeInterval:Observable<number> = interval(1000);
 
   constructor() { }
 
@@ -35,5 +39,9 @@ export class JokesStore {
 
           return joke;
         });
+  }
+
+  toggleInterval (forcedValue?: boolean) {
+    this.intervalEnabled.next(forcedValue ?? !this.intervalEnabled.getValue());
   }
 }
