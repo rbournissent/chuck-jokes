@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 
 import { NavbarComponent } from './navbar.component';
+import { ThemeSwitchComponent } from '../theme-switch/theme-switch.component';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -17,7 +18,10 @@ describe('NavbarComponent', () => {
         MatIconModule,
         MatBadgeModule
       ],
-      declarations: [NavbarComponent]
+      declarations: [
+        NavbarComponent,
+        ThemeSwitchComponent
+      ]
     });
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
