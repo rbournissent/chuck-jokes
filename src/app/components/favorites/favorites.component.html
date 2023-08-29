@@ -1,1 +1,9 @@
-<p>favorites works!</p>
+<section *ngIf="favoriteJokes.length; else noFavorites">
+  <app-joke *ngFor="let joke of favoriteJokes" [joke]="joke">
+  </app-joke>
+</section>
+<ng-template #noFavorites>
+  <section>
+    <p class="text-center">You haven't selected any joke as one of your favorites yet.</p>
+  </section>
+</ng-template>

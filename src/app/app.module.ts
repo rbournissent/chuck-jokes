@@ -8,6 +8,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MaterialModule } from './material/material.module';
 import { ThemeSwitchComponent } from './components/theme-switch/theme-switch.component';
+import { JokeComponent } from './components/joke/joke.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ThemeSwitchComponent } from './components/theme-switch/theme-switch.com
     HomeComponent,
     FavoritesComponent,
     NavbarComponent,
-    ThemeSwitchComponent
+    ThemeSwitchComponent,
+    JokeComponent
   ],
   imports: [
     BrowserModule,

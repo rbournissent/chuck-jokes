@@ -8,13 +8,31 @@ import { Joke } from '../models/joke';
 export class JokesStore {
   static API_URL = 'https://api.chucknorris.io';
   static MAX_JOKES = 10;
+  static MAX_FAVORITE_JOKES = 10;
 
   private jokes = new BehaviorSubject<Joke[]>([]);
   jokes$ = this.jokes.asObservable();
 
+  private favoriteJokes = new BehaviorSubject<Joke[]>([]);
+  favoriteJokes$ = this.favoriteJokes.asObservable();
+
   private intervalEnabled = new BehaviorSubject<boolean>(true);
   intervalEnabled$ = this.intervalEnabled.asObservable();
   newJokeInterval:Observable<number> = interval(1000);
+
+  constructor() {
+    // Restore favorites
+    const favoriteJokes = localStorage.getItem('favorites');
+    try {
+      this.favoriteJokes.next(favoriteJokes
+        ? JSON.parse(favoriteJokes)
+        : []
+      );
+    } catch (e) {
+      console.error(e);
+      this.favoriteJokes.next([]);
+    }
+  }
 
    // Fetches a new random joke
    getNewJoke () {
@@ -41,5 +59,26 @@ export class JokesStore {
 
   toggleInterval (forcedValue?: boolean) {
     this.intervalEnabled.next(forcedValue ?? !this.intervalEnabled.getValue());
+  }
+
+  toggleFavorite (joke: Joke) {
+    joke.isFavorite = !joke.isFavorite;
+
+    if (joke.isFavorite) {
+      this.favoriteJokes.next([
+        ...this.favoriteJokes.getValue(),
+        joke
+      ]);
+    } else {
+      this.favoriteJokes.next(this.favoriteJokes
+        .getValue()
+        .filter((item) => item.id !== joke.id)
+      );
+    }
+
+    localStorage.setItem(
+      'favorites',
+      JSON.stringify(this.favoriteJokes.getValue())
+    );
   }
 }

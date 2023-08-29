@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-content>{{ joke?.text }}</mat-card-content>
+  <mat-card-actions>
+    <button mat-icon-button
+      (click)="toggleFavorite()"
+      [disabled]="!joke?.isFavorite && favoriteJokesCount >= maxJokes"
+      aria-label="Mark joke as favorite">
+      <mat-icon>favorite{{ joke?.isFavorite ? '' : '_outline' }}</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
