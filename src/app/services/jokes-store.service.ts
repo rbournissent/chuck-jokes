@@ -16,8 +16,6 @@ export class JokesStore {
   intervalEnabled$ = this.intervalEnabled.asObservable();
   newJokeInterval:Observable<number> = interval(1000);
 
-  constructor() { }
-
    // Fetches a new random joke
    getNewJoke () {
     // Remove last one when max is reached

@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   loadingJokes = false;
   jokes: Joke[] = [];
-  intervalEnabled:boolean = true;
+  intervalEnabled = true;
   newJokeInterval$?: Subscription;
   newJokeTimeRemaining = HomeComponent.NEW_JOKE_INTERVAL;
   intervalCounter = 0;
