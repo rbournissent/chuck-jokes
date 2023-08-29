@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  readonly title:string = 'Chuck Jokes';
 
+  favoriteJokesCount = 0;
 }
