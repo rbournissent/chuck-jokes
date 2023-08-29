@@ -18,4 +18,9 @@ describe('FavoritesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should initialize favoriteJokes as an empty array', () => {
+    expect(component.favoriteJokes).toBeDefined();
+    expect(component.favoriteJokes).toEqual([]);
+  });
 });
