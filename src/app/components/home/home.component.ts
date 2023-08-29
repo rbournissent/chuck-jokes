@@ -86,7 +86,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   onError () {
     this.errorMessage = 'We couldn\'t get a new joke for you. Resume if you want to try again';
-    console.log('Hi there!');
     this.toggleInterval(false);
   }
 }
