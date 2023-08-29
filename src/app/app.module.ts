@@ -7,13 +7,15 @@ import { HomeComponent } from './components/home/home.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MaterialModule } from './material/material.module';
+import { ThemeSwitchComponent } from './components/theme-switch/theme-switch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FavoritesComponent,
-    NavbarComponent
+    NavbarComponent,
+    ThemeSwitchComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ThemeSwitchComponent } from './components/theme-switch/theme-switch.component';
+
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -20,7 +22,8 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        NavbarComponent
+        NavbarComponent,
+        ThemeSwitchComponent
       ]
     });
 
