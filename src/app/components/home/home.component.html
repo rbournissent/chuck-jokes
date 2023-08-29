@@ -1,1 +1,17 @@
-<p>home works!</p>
+<main>
+  <section *ngIf="loadingJokes">
+    <mat-progress-bar mode="determinate" value="{{ jokes.length * 10 }}"></mat-progress-bar>
+    <span [ngStyle]="{ textAlign: 'center' }">Loading jokes...</span>
+  </section>
+  <section *ngIf="!loadingJokes">
+    <mat-card *ngFor="let joke of jokes">
+      <mat-card-content>{{ joke?.text }}</mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button
+          aria-label="Mark joke as favorite">
+          <mat-icon>favorite{{ joke?.isFavorite ? '' : '_outline' }}</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </section>
+</main>
