@@ -36,6 +36,7 @@ describe('HomeComponent', () => {
 
   describe('Before ngOnInit', () => {
     beforeEach(() => {
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
       spyOn<any>(component, 'initJokes').and.returnValues([]);
       spyOn(component, 'toggleInterval').and.callThrough();
       spyOn(service, 'getNewJoke').and.callThrough();

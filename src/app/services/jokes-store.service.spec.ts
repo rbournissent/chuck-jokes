@@ -1,4 +1,4 @@
-import { TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed, fakeAsync } from '@angular/core/testing';
 
 import { JokesStore } from './jokes-store.service';
 import { Joke } from './../models/joke';
