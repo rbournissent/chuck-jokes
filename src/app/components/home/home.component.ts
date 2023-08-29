@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   newJokeInterval$?: Subscription;
   newJokeTimeRemaining = HomeComponent.NEW_JOKE_INTERVAL;
   intervalCounter = 0;
+  errorMessage = '';
 
   constructor (private jokesStore: JokesStore) {
     this.jokesStore.jokes$.subscribe(jokes => this.jokes = jokes);
@@ -32,6 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         .then(() => {
           this.toggleInterval(true);
         })
+        .catch(() => this.onError())
         .finally(() => {
           this.loadingJokes = false;
         });
@@ -63,7 +65,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
         if (!this.newJokeTimeRemaining) {
           // Get new joke
-          this.jokesStore.getNewJoke();
+          this.jokesStore.getNewJoke()
+            .catch(() => this.onError());
           // Reset countdown
           this.newJokeTimeRemaining = HomeComponent.NEW_JOKE_INTERVAL;
         }
@@ -75,5 +78,15 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   stopInterval() {
     this.newJokeInterval$?.unsubscribe();
+  }
+
+  dismissError() {
+    this.errorMessage = '';
+  }
+
+  onError () {
+    this.errorMessage = 'We couldn\'t get a new joke for you. Resume if you want to try again';
+    console.log('Hi there!');
+    this.toggleInterval(false);
   }
 }
