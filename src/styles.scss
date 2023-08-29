@@ -36,3 +36,21 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+// Section with jokes
+section {
+  padding: 1rem 0;
+  width: 60%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 1rem;
+
+  @media screen and (max-width: 62rem) {
+    width: 80%;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
