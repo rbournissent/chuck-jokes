@@ -1,16 +1,21 @@
-<ul>
-  <li>
-    <a routerLink="/"
-      routerLinkActive="active"
-      ariaCurrentWhenActive="page">
-      Home
+<mat-toolbar color="primary">
+  <h1>
+    <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+      {{ title }}
     </a>
-  </li>
-  <li>
-    <a routerLink="/favorites"
-      routerLinkActive="active"
-      ariaCurrentWhenActive="page">
-      Favorites
-    </a>
-  </li>
-</ul>
+  </h1>
+  <i [ngStyle]="{ fontWeight: 300, marginRight: '1rem' }">
+   A new joke every 5 secs...
+   </i>
+  <a mat-icon-button
+    routerLink="favorites"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    aria-label="List your favorite jokes"
+    matTooltip="My Favorite Jokes">
+    <mat-icon matBadge="{{ favoriteJokesCount }}"
+     aria-hidden="false"
+     matBadgePosition="below after"
+     matBadgeColor="accent">favorite</mat-icon>
+  </a>
+</mat-toolbar>

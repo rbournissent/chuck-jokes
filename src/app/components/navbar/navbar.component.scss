@@ -1,0 +1,14 @@
+h1 {
+  font-weight: 500;
+  flex: 1;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+@media screen and (max-width: 48rem) {
+  i {
+    display: none;
+  }
+}
