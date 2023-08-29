@@ -21,4 +21,14 @@ describe('ThemeSwitchComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should switch theme', () => {
+    expect(component.selectedTheme).toBe(component.DARK_THEME);
+
+    component.switchTheme();
+    expect(component.selectedTheme).toBe(component.LIGHT_THEME);
+
+    component.switchTheme();
+    expect(component.selectedTheme).toBe(component.DARK_THEME);
+  });
 });
