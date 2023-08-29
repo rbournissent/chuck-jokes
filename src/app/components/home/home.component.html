@@ -1,4 +1,18 @@
 <main>
+  <section class="countdown">
+    <p>
+      <span *ngIf="intervalEnabled; else intervalDisabled">
+        New joke arriving in {{ newJokeTimeRemaining }} seconds...
+      </span>
+      <ng-template #intervalDisabled>
+        Resume to keep getting new jokes.
+      </ng-template>
+    </p>
+    <button mat-button color="{{ intervalEnabled ? 'warn' : 'accent' }}"
+      (click)="toggleInterval()">
+      {{ intervalEnabled ? 'PAUSE':'RESUME'}}
+    </button>
+  </section>
   <section *ngIf="loadingJokes">
     <mat-progress-bar mode="determinate" value="{{ jokes.length * 10 }}"></mat-progress-bar>
     <span [ngStyle]="{ textAlign: 'center' }">Loading jokes...</span>
